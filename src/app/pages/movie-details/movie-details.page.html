@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+
+    <!-- show movie genre -->
+    <ion-title>{{ information?.Genre }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngIf="information">
+
+    <ion-card-header>
+
+      <!-- show movie title using API fields-->
+      <ion-card-title>
+        {{ information.Title }}
+      </ion-card-title>
+
+      <!-- show movie release year using API fields-->
+      <ion-card-subtitle>
+        {{ information.Year }}
+      </ion-card-subtitle>
+
+    </ion-card-header>
+
+    <!-- show movie plot using API fields-->
+    <ion-card-content text-center>
+      <img [src]="information.Poster" class="info-img">
+      {{ information.Plot }}
+
+      <!-- show director(s) name(s) using API fields-->
+      <ion-item lines="none">
+        <ion-icon name="star-half" slot="start"></ion-icon>
+        <ion-label text-wrap>{{ information.Director }}</ion-label>
+      </ion-item>
+
+      <!-- show actors names using API fields-->
+      <ion-item lines="none">
+        <ion-icon name="contacts" slot="start"></ion-icon>
+        <ion-label text-wrap>{{ information.Actors }}</ion-label>
+      </ion-item>
+
+      <!-- show imdb Rating using API fields-->
+      <ion-item lines="none">
+        <ion-icon name="heart-half" slot="start"></ion-icon>
+        <ion-label text-wrap>{{ information.imdbRating }} /10 by IMDb</ion-label>
+      </ion-item>
+
+      <!-- link to open movie website if available-->
+      <ion-button expand="full" (click)="openWebsite()" *ngIf="information.Website && information.Website != 'N/A'">
+        <ion-icon name="open" slot="start"></ion-icon>
+        Open Website
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

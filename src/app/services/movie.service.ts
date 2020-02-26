@@ -18,7 +18,7 @@ export class MovieService {
   url = 'http://www.omdbapi.com/';
 
   // own api key provided
-  apiKey = 'd43a801a';
+  apiKey = 'enter your key here';
 
   constructor(private http: HttpClient) { }
 
